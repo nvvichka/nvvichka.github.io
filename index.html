@@ -13,7 +13,7 @@
     }
 
     .bg {
-      background-image: url("images/image.jpg");
+      background-image: url("/image.jpg");
       height: 104%;
       background-position: center;
       background-repeat: no-repeat;
@@ -21,7 +21,7 @@
     }
 
     h1 {
-      text-align: left;
+      text-align: center;
       padding-bottom: 80px;
       padding-left: 430px;
       padding-top: 120px;
@@ -56,21 +56,35 @@
       font-style: italic;
       font-size: 28px;
     }
+    .sensor-data {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .sensor-reading {
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 8px;
+      padding: 10px;
+      margin: 10px;
+      width: 300px;
+      text-align: center;
+    }
+  </style>
   </style>
 </head>
 
 <body class="bg">
-
-  <h1> Fish Aquarium Monitoring System </h1>
-  <table>
-    <thead>
-      <th>BIN Number</th>
-      <th>BIN Status</th>
-    </thead>
-    <tbody id="t1">
-
-    </tbody>
-  </table>
+  <h1>Fish Aquarium Monitoring System</h1>
+  
+  <div class="sensor-data">
+    <!-- Placeholders for sensor data -->
+    <div class="sensor-reading" id="temperature">Temperature: Loading...</div>
+    <div class="sensor-reading" id="phQuality">Water PH Quality: Loading...</div>
+    <div class="sensor-reading" id="turbidity">Turbidity: Loading...</div>
+    <div class="sensor-reading" id="conductivity">Water Conductivity: Loading...</div>
+  </div>
 </body>
 
 <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
@@ -85,10 +99,28 @@
     messagingSenderId: "9257147731"
   };
   firebase.initializeApp(config);
-</script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js">
 
+  // Reference to your entire Firebase database
+  var database = firebase.database();
+
+  // Reference to the sensor data in your database
+  var sensorDataRef = database.ref('sensorData');
+
+  // Listen for changes in the sensor data
+  sensorDataRef.on('value', function(snapshot) {
+    var data = snapshot.val();
+    // Update your webpage with the values from the database
+    if(data) {
+      document.getElementById('temperature').textContent = 'Temperature: ' + data.temperature + '°C';
+      document.getElementById('phQuality').textContent = 'Water PH Quality: ' + data.phQuality;
+      document.getElementById('turbidity').textContent = 'Turbidity: ' + data.turbidity + ' NTU';
+      document.getElementById('conductivity').textContent = 'Water Conductivity: ' + data.conductivity + ' µS/cm';
+    }
+  });
 </script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="index.js"></script>
+
+</html>
 
 </html>
