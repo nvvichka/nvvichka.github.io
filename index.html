@@ -2,18 +2,18 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>iot</title>
   <style>
     html,
     body {
-      height: 100%;
+      min-height: 100vh;
       margin: 0px;
     }
 
     .bg {
       background-image: url("/image.jpg");
-      height: 100%;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -96,6 +96,34 @@
         .feed-scheduler button:hover {
             background-color: #45a049;
         }
+        /* Adjust styles for screens with a maximum width of 768px (typical mobile screens) */
+    @media (max-width: 768px) {
+      .bg {
+        background-size: contain;
+      }
+
+      h1 {
+        margin: 40px 20px;
+        font-size: 24px;
+      }
+
+      .card {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .card-icon {
+        font-size: 30px;
+      }
+
+      .card-name {
+        font-size: 16px;
+      }
+
+      .card-text {
+        font-size: 20px;
+      }
+    }
   </style>
   </style>
 </head>
@@ -178,7 +206,5 @@
 </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="index.js"></script>
-
-</html>
 
 </html>
