@@ -11,6 +11,7 @@
       height: 100%;
       margin: 0px;
     }
+
     .bg {
       background-image: url("/image.jpg");
       height: 100%;
@@ -25,20 +26,21 @@
       padding-top: 120px;
 
     }
+
     p {
       font-style: italic;
       font-size: 28px;
     }
     .container {
-            width: 70%;
-            height: 70%;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 20px;
         }
 
         .card {
+            width:400px;
+            height: 250px;
             background-color: #fff;
             border-radius: 10px;
             display: flex;
@@ -47,7 +49,6 @@
             justify-content: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             transition: 0.3s;
-            padding: 20px;
         }
 
         .card:hover {
@@ -55,20 +56,24 @@
         }
 
         .card-icon {
-            width: 60px;
-            height: 60px;
+            width: 40px;
+            height: 40px;
             background-color: #eee;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-            font-size: 30px;
+            margin-bottom: 10px;
         }
 
         .card-text {
             font-weight: bold;
-            font-size: 24px;
+            font-size: 18px;
+        }
+        .card-name {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: 600;
         }
   </style>
   </style>
@@ -78,19 +83,23 @@
   <h1>Fish Aquarium Monitoring System</h1>
   <div class="container">
     <div class="card">
-        <div class="card-icon">🌡️</div> <!-- This is a thermometer emoji for temperature -->
-        <div class="card-text" id="temperature">25</div>
+        <div class="card-icon">🌡️</div>
+        <div class="card-name">Temperature</div>
+        <div class="card-text" id="temperature">25°C</div>
     </div>
     <div class="card">
-        <div class="card-icon">🧪</div> <!-- This is a test tube emoji for PH quality -->
-        <div class="card-text" id="phQuality">Loading...</div>
+        <div class="card-icon">🧪</div>
+        <div class="card-name">PH Quality</div>
+        <div class="card-text" id="phQuality">pH 7</div>
     </div>
     <div class="card">
-        <div class="card-icon">💧</div> <!-- This is a droplet emoji for turbidity -->
+        <div class="card-icon">💧</div>
+        <div class="card-name">Turbidity</div>
         <div class="card-text" id="turbidity">Loading...</div>
     </div>
     <div class="card">
-        <div class="card-icon">⚡</div> <!-- This is a lightning bolt emoji for conductivity -->
+        <div class="card-icon">⚡</div>
+        <div class="card-name">Conductivity</div>
         <div class="card-text" id="conductivity">Loading...</div>
     </div>
 </div>
